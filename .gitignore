@@ -19,6 +19,6 @@ hs_err_pid*
 target
 .gradle
 build
-.idea	
-*.iml	
+.idea
+*.iml
 .java-version
