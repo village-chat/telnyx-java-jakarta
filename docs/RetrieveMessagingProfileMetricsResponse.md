@@ -1,6 +1,16 @@
+
+
 # RetrieveMessagingProfileMetricsResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**MessagingProfileDetailedMetrics**](MessagingProfileDetailedMetrics.md) |  |  [optional]
+
+
+## Implemented Interfaces
+
+* Serializable
+
+

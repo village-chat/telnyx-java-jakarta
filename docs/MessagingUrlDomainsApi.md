@@ -4,42 +4,61 @@ All URIs are relative to *https://api.telnyx.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAllMessagingUrlDomains**](MessagingUrlDomainsApi.md#getAllMessagingUrlDomains) | **GET** /messaging_url_domains | List all available messaging URL domains
+[**listMessagingUrlDomains**](MessagingUrlDomainsApi.md#listMessagingUrlDomains) | **GET** /messaging_url_domains | List messaging URL domains
+[**listMessagingUrlDomainsWithHttpInfo**](MessagingUrlDomainsApi.md#listMessagingUrlDomainsWithHttpInfo) | **GET** /messaging_url_domains | List messaging URL domains
 
-<a name="getAllMessagingUrlDomains"></a>
-# **getAllMessagingUrlDomains**
-> ListMessagingProfileURLDomainsResponse getAllMessagingUrlDomains()
 
-List all available messaging URL domains
+
+## listMessagingUrlDomains
+
+> CompletableFuture<ListMessagingProfileUrlDomainsResponse> listMessagingUrlDomains()
+
+List messaging URL domains
 
 ### Example
+
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.MessagingUrlDomainsApi;
+import com.telnyx.sdk.ApiClient;
+import com.telnyx.sdk.ApiException;
+import com.telnyx.sdk.Configuration;
+import com.telnyx.sdk.auth.*;
+import com.telnyx.sdk.models.*;
+import com.telnyx.sdk.apis.MessagingUrlDomainsApi;
+import java.util.concurrent.CompletableFuture;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.telnyx.com/v2");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
-
-MessagingUrlDomainsApi apiInstance = new MessagingUrlDomainsApi();
-try {
-    ListMessagingProfileURLDomainsResponse result = apiInstance.getAllMessagingUrlDomains();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling MessagingUrlDomainsApi#getAllMessagingUrlDomains");
-    e.printStackTrace();
+        MessagingUrlDomainsApi apiInstance = new MessagingUrlDomainsApi(defaultClient);
+        try {
+            CompletableFuture<ListMessagingProfileUrlDomainsResponse> result = apiInstance.listMessagingUrlDomains();
+            System.out.println(result.get());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling MessagingUrlDomainsApi#listMessagingUrlDomains");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
 }
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**ListMessagingProfileURLDomainsResponse**](ListMessagingProfileURLDomainsResponse.md)
+CompletableFuture<[**ListMessagingProfileUrlDomainsResponse**](ListMessagingProfileUrlDomainsResponse.md)>
+
 
 ### Authorization
 
@@ -47,6 +66,88 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful response with details about a messaging URL domain. |  -  |
+| **0** | Unexpected error |  -  |
+
+## listMessagingUrlDomainsWithHttpInfo
+
+> CompletableFuture<ApiResponse<ListMessagingProfileUrlDomainsResponse>> listMessagingUrlDomains listMessagingUrlDomainsWithHttpInfo()
+
+List messaging URL domains
+
+### Example
+
+```java
+// Import classes:
+import com.telnyx.sdk.ApiClient;
+import com.telnyx.sdk.ApiException;
+import com.telnyx.sdk.ApiResponse;
+import com.telnyx.sdk.Configuration;
+import com.telnyx.sdk.auth.*;
+import com.telnyx.sdk.models.*;
+import com.telnyx.sdk.apis.MessagingUrlDomainsApi;
+import java.util.concurrent.CompletableFuture;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.telnyx.com/v2");
+        
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        MessagingUrlDomainsApi apiInstance = new MessagingUrlDomainsApi(defaultClient);
+        try {
+            CompletableFuture<ApiResponse<ListMessagingProfileUrlDomainsResponse>> response = apiInstance.listMessagingUrlDomainsWithHttpInfo();
+            System.out.println("Status code: " + response.get().getStatusCode());
+            System.out.println("Response headers: " + response.get().getHeaders());
+            System.out.println("Response body: " + response.get().getData());
+        } catch (InterruptedException | ExecutionException e) {
+            ApiException apiException = (ApiException)e.getCause();
+            System.err.println("Exception when calling MessagingUrlDomainsApi#listMessagingUrlDomains");
+            System.err.println("Status code: " + apiException.getCode());
+            System.err.println("Response headers: " + apiException.getResponseHeaders());
+            System.err.println("Reason: " + apiException.getResponseBody());
+            e.printStackTrace();
+        } catch (ApiException e) {
+            System.err.println("Exception when calling MessagingUrlDomainsApi#listMessagingUrlDomains");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+CompletableFuture<ApiResponse<[**ListMessagingProfileUrlDomainsResponse**](ListMessagingProfileUrlDomainsResponse.md)>>
+
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful response with details about a messaging URL domain. |  -  |
+| **0** | Unexpected error |  -  |
 

@@ -1,10 +1,20 @@
+
+
 # Error
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **String** |  | 
+**code** | **Integer** |  | 
 **title** | **String** |  | 
 **detail** | **String** |  |  [optional]
 **source** | [**ErrorSource**](ErrorSource.md) |  |  [optional]
-**meta** | **Object** |  |  [optional]
+**meta** | [**ErrorMeta**](ErrorMeta.md) |  |  [optional]
+
+
+## Implemented Interfaces
+
+* Serializable
+
+
